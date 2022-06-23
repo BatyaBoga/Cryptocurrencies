@@ -4,8 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cryptocurrencies"
+        xmlns:vm="clr-namespace:Cryptocurrencies.ViewModels"
         mc:Ignorable="d"
         Title="Cryptocurrency" Height="688" Width="1032" MinWidth="850">
+    
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
     
     <Grid>
         <Grid.RowDefinitions>
@@ -34,8 +39,9 @@
 
                 <TextBox TextWrapping="Wrap" DockPanel.Dock="Right" Width="182" Margin="0,0,10,0" Height="18" 
                          FontFamily="Yu Gothic Light" FontSize="13" HorizontalAlignment="Right"/>
-
             </DockPanel>
         </Grid>
+
+        <ContentControl  Grid.Row="1" Content="{Binding CurrentPage,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
     </Grid>
 </Window>

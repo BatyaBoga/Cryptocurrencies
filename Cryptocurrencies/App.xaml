@@ -2,8 +2,15 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Cryptocurrencies"
+             xmlns:views="clr-namespace:Cryptocurrencies.Views.Pages"
+             xmlns:viewmodels="clr-namespace:Cryptocurrencies.ViewModels"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-         
+        
+        <DataTemplate DataType="{x:Type viewmodels:ListOfCoinViewModel}">
+            <views:ListofCoin/>
+        </DataTemplate>
+
+        
     </Application.Resources>
 </Application>
