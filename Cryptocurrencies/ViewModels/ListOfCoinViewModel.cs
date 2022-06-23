@@ -16,6 +16,14 @@ namespace Cryptocurrencies.ViewModels
 
         }
 
+        public ICommand SelectedItem_click
+        {
+            get
+            {
+                return new RelayCommand((_) => MainViewModel.CurrentPage = new CoinInformViewModel(SelectedCoin.id));
+            }
+        }
+
 
     }
 }

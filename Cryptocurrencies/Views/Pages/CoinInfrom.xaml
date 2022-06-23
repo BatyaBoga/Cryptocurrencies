@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="Cryptocurrencies.Views.Pages.CoinInfrom"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Cryptocurrencies.Views.Pages"
+             xmlns:vm="clr-namespace:Cryptocurrencies.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Image Source="{Binding img}" Height="115" Margin="139,24,139,86" Width="122"/>
+        </Grid>
+
+        <Grid Grid.Row="0" Grid.Column="1">
+          <StackPanel>
+            <StackPanel.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Padding" Value="15"/>
+                    <Setter Property="TextAlignment" Value="Left"/>
+                    <Setter Property="FontFamily" Value="Yu Gothic UI Semibold"/>
+                    <Setter Property="FontSize" Value="20"/>
+                </Style>
+            </StackPanel.Resources>
+            <TextBlock Text="{Binding CoinInfo.name,StringFormat=Name: {0}}" Margin="0,0,0,15"/>
+                <TextBlock Text="{Binding CoinInfo.priceUsd, StringFormat=Price USD: ${0:0.0000}}" Margin="0,0,0,15"/>
+                <TextBlock Text="{Binding CoinInfo.changePercent24Hr, StringFormat=Change price percent: {0:0.0000}}" Margin="0,0,0,15"/>
+                <TextBlock Text="{Binding CoinInfo.volumeUsd24Hr,StringFormat=Volume: {0:0.0000}}" Margin="0,0,0,0"/>
+
+          </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0">
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+        </Grid>
+    </Grid>
+</UserControl>

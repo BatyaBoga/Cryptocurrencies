@@ -11,6 +11,30 @@
             <views:ListofCoin/>
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type viewmodels:CoinInformViewModel}">
+            <views:CoinInfrom/>
+        </DataTemplate>
+
+        <ControlTemplate TargetType="Button" x:Key="btTemplate">
+            <Border x:Name="buttonBorder2" CornerRadius="4"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Background="{TemplateBinding Background}"
+                    Height="{TemplateBinding Height}"
+                    Width="{TemplateBinding Width}" >
+                <ContentControl Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}" />
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter TargetName="buttonBorder2" Property="Background" Value="Gray" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
         
     </Application.Resources>
 </Application>

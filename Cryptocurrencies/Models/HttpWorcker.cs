@@ -31,5 +31,11 @@ namespace Cryptocurrencies.Models
             CoinInfo[] coins = dataArr.data;
             return coins;
         }
+
+        public static CoinInfo GetCoinInfo(string id)
+        {
+            DataInfo data = HttpWorcker.GetRequestAsync<DataInfo>(@"https://api.coincap.io/v2/assets/" + id).Result;
+            return data.data;
+        }
     }
 }

@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cryptocurrencies.Commands;
+using System.Windows.Input;
 
 namespace Cryptocurrencies.ViewModels
 {
@@ -24,6 +26,15 @@ namespace Cryptocurrencies.ViewModels
         {
             CurrentPage = new ListOfCoinViewModel();
 
+        }
+
+
+        public ICommand HomeClick
+        {
+            get
+            {
+                return new RelayCommand((_) => CurrentPage = new ListOfCoinViewModel());
+            }
         }
 
         #region ChangeProperty

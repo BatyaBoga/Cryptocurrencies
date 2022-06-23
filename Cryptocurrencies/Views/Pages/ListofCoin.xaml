@@ -43,6 +43,13 @@
                      FontFamily="Yu Gothic Light" FontSize="15"
                      SelectedItem="{Binding SelectedCoin}">
 
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding SelectedItem_click}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                
                 <ListBox.ItemTemplate >
                     <DataTemplate>
 
