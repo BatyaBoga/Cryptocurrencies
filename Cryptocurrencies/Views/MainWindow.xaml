@@ -33,12 +33,13 @@
                     <Image Source="pack://application:,,,/Resources/Home.png"/>
                 </Button>
 
-                <Button  DockPanel.Dock="Right" Background="DarkGray" Template="{StaticResource btTemplate}"  Width="24" Height="22" Margin="0,0,20,0">
+                <Button Command="{Binding SearchClick}" DockPanel.Dock="Right" Background="DarkGray" Template="{StaticResource btTemplate}"  Width="24" Height="22" Margin="0,0,20,0">
                     <Image Source= "pack://application:,,,/Resources/Search.png" Height="18" Width="24"/>
                 </Button>
 
                 <TextBox TextWrapping="Wrap" DockPanel.Dock="Right" Width="182" Margin="0,0,10,0" Height="18" 
-                         FontFamily="Yu Gothic Light" FontSize="13" HorizontalAlignment="Right"/>
+                         FontFamily="Yu Gothic Light" FontSize="13" HorizontalAlignment="Right"
+                         Text="{Binding TxtBoxText}"/>
             </DockPanel>
         </Grid>
 

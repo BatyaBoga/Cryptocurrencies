@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Cryptocurrencies.Commands;
 using System.Windows.Input;
+using System.Windows;
 
 namespace Cryptocurrencies.ViewModels
 {
@@ -22,18 +23,53 @@ namespace Cryptocurrencies.ViewModels
             }
         }
 
+        public string TxtBoxText { get; set; }
+
         public MainViewModel()
         {
             CurrentPage = new ListOfCoinViewModel();
 
         }
-
+        
 
         public ICommand HomeClick
         {
             get
             {
-                return new RelayCommand((_) => CurrentPage = new ListOfCoinViewModel());
+                return new RelayCommand((_) => CurrentPage = CurrentPage is ListOfCoinViewModel ? CurrentPage : new ListOfCoinViewModel());
+            }
+        }
+
+        public ICommand SearchClick
+        {
+            get
+            {
+                return new RelayCommand((_) =>
+                {
+                    var SearchQuery = from coins in ListOfCoinViewModel.Coins
+                                      where coins.name == TxtBoxText || coins.id == TxtBoxText
+                                      || coins.symbol == TxtBoxText.ToUpperInvariant()
+                                      select coins.id;
+
+                    if (TxtBoxText != "" && SearchQuery.Count() != 0)
+                    {
+                        if (CurrentPage is not CoinInformViewModel)
+                        {
+                            CurrentPage = new CoinInformViewModel(SearchQuery.First());
+                        }
+                        else
+                        {
+                            (CurrentPage as CoinInformViewModel).id = SearchQuery.First();
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show($"No results found for your search {TxtBoxText}");
+                    }
+
+
+                });
             }
         }
 
