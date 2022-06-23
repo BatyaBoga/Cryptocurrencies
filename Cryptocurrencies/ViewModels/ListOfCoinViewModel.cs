@@ -15,7 +15,6 @@ namespace Cryptocurrencies.ViewModels
             Coins = new ObservableCollection<CoinInfo>(HttpWorcker.GetCoinsInfo());
 
         }
-
         public ICommand SelectedItem_click
         {
             get

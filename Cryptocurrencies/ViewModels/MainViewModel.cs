@@ -30,8 +30,6 @@ namespace Cryptocurrencies.ViewModels
             CurrentPage = new ListOfCoinViewModel();
 
         }
-        
-
         public ICommand HomeClick
         {
             get

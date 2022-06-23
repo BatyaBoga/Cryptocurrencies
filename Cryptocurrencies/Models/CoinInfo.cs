@@ -1,5 +1,4 @@
-﻿
-namespace Cryptocurrencies.Models
+﻿namespace Cryptocurrencies.Models
 {
     class CoinInfo
     {

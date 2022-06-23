@@ -4,8 +4,6 @@ using Newtonsoft.Json;
 
 namespace Cryptocurrencies.Models
 {
-
-    
     static class HttpWorcker
     {
         static HttpClient client = new HttpClient();
@@ -43,6 +41,13 @@ namespace Cryptocurrencies.Models
             DataArr<PriceChange> dataArr = HttpWorcker.GetRequestAsync<DataArr<PriceChange>>(@"https://api.coincap.io/v2/assets/" + id + @"/history?interval=d1").Result;
             PriceChange[] prices = dataArr.data;
             return prices;
+        }
+
+        public static Markets[] GetMarkets(string id)
+        {
+            DataArr<Markets> dataArr = HttpWorcker.GetRequestAsync<DataArr<Markets>>(@"https://api.coincap.io/v2/markets?baseId=" + id).Result;
+            Markets[] markets = dataArr.data;
+            return markets;
         }
     }
 }

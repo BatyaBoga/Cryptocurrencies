@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Cryptocurrencies.Models;
 
 namespace Cryptocurrencies.ViewModels
@@ -20,6 +16,29 @@ namespace Cryptocurrencies.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        private List<Markets> _markets;
+        public List<Markets> Markets
+        {
+            get => _markets;
+            set
+            {
+                _markets = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private List<PriceChange> _prices;
+        public List<PriceChange> Prices
+        {
+            get => _prices;
+            set
+            {
+                _prices = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         private string _id;
         public string id
@@ -44,16 +63,6 @@ namespace Cryptocurrencies.ViewModels
             }
         }
 
-        private List<PriceChange> _prices;
-        public List<PriceChange> Prices
-        {
-            get => _prices;
-            set
-            {
-                _prices = value;
-                OnPropertyChanged();
-            }
-        }
         public CoinInformViewModel(string id)
         {
             this.id = id;
@@ -62,6 +71,7 @@ namespace Cryptocurrencies.ViewModels
         private void InitializeComponent()
         {
             CoinInfo = HttpWorcker.GetCoinInfo(id);
+            Markets = new List<Markets>(HttpWorcker.GetMarkets(id));
             img = @"https://assets.coincap.io/assets/icons/" + CoinInfo.symbol.ToLower() + "@2x.png";
             Prices = new List<PriceChange>(HttpWorcker.GetPriceInfo(id));
             Prices.Reverse();

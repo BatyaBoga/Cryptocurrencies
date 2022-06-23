@@ -41,7 +41,6 @@
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="0">
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="*"/>
@@ -85,6 +84,48 @@
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <ItemsControl HorizontalContentAlignment="Stretch" FontFamily="Yu Gothic UI Semibold" FontSize="15" Margin="21,0,21,0">
+                    <UniformGrid Columns="4">
+                        <UniformGrid.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Margin" Value="5"/>
+                                <Setter Property="TextAlignment" Value="Center"/>
+                            </Style>
+                        </UniformGrid.Resources>
+                        <TextBlock Width="74"><Run Text="Market"/></TextBlock>
+                        <TextBlock Width="84"><Run Text="Quote asset"/></TextBlock>
+                        <TextBlock Width="88"><Run Text="Price quote "/></TextBlock>
+                        <TextBlock Width="68"><Run Text="Price USD"/></TextBlock>
+                    </UniformGrid>
+                </ItemsControl>
+            </Grid>
+            <Grid Grid.Row="1">
+                <ListBox HorizontalContentAlignment="Stretch" ItemsSource="{Binding Markets}" 
+                     FontFamily="Yu Gothic Light" FontSize="15" Margin="20,0,20,20">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <UniformGrid Columns="4">
+                                <UniformGrid.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Margin" Value="5"/>
+                                        <Setter Property="TextAlignment" Value="Center"/>
+
+                                    </Style>
+                                </UniformGrid.Resources>
+                                <TextBlock Text="{Binding exchangeId}"/>
+                                <TextBlock Text="{Binding quoteSymbol}"/>
+                                <TextBlock Text="{Binding priceQuote, StringFormat='{}{0:0.00}'}"/>
+                                <TextBlock Text="{Binding priceUsd, StringFormat=$ {0:0.00}}"/>
+                            </UniformGrid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

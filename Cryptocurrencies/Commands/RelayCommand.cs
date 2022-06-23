@@ -5,10 +5,10 @@ namespace Cryptocurrencies.Commands
 {
     public class RelayCommand : ICommand
     {
-        private Action<object> action;
+        private Action<object> _action;
         public RelayCommand(Action<object> action)
         {
-            this.action = action;
+            this._action = action;
         }
         public bool CanExecute(object parameter)
         {
@@ -17,7 +17,7 @@ namespace Cryptocurrencies.Commands
 
         public void Execute(object parameter)
         {
-            action(parameter);
+            _action(parameter);
         }
 
         public event EventHandler CanExecuteChanged;
