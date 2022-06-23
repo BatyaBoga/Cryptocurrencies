@@ -8,8 +8,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\home.png" />
+    <None Remove="Resources\Search.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Home.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Search.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
