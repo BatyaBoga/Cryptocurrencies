@@ -41,6 +41,47 @@
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <ItemsControl HorizontalContentAlignment="Stretch" FontFamily="Yu Gothic UI Semibold" FontSize="15" Margin="20,0,20,0">
+                    <UniformGrid Columns="2">
+                        <UniformGrid.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Margin" Value="5"/>
+                                <Setter Property="TextAlignment" Value="Center"/>
+                            </Style>
+                        </UniformGrid.Resources>
+                        <TextBlock Width="53"><Run Text="Date"/></TextBlock>
+                        <TextBlock Width="74"><Run Text="Price USD"/></TextBlock>
+                    </UniformGrid>
+                </ItemsControl>
+            </Grid>
+            <Grid Grid.Row="1">
+                <ListBox HorizontalContentAlignment="Stretch" ItemsSource="{Binding Prices}" 
+                     FontFamily="Yu Gothic Light" FontSize="15" Margin="20,0,20,20">
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <UniformGrid Columns="2">
+                                <UniformGrid.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Margin" Value="5"/>
+                                        <Setter Property="TextAlignment" Value="Center"/>
+
+                                    </Style>
+
+                                </UniformGrid.Resources>
+                                <TextBlock Text="{Binding TimeDay, StringFormat='{}{0:dd/MM/yyyy}'}"/>
+                                <TextBlock Text="{Binding priceUsd, StringFormat=$ {0}}"/>
+                            </UniformGrid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="1">

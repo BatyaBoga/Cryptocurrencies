@@ -44,6 +44,16 @@ namespace Cryptocurrencies.ViewModels
             }
         }
 
+        private List<PriceChange> _prices;
+        public List<PriceChange> Prices
+        {
+            get => _prices;
+            set
+            {
+                _prices = value;
+                OnPropertyChanged();
+            }
+        }
         public CoinInformViewModel(string id)
         {
             this.id = id;
@@ -53,6 +63,8 @@ namespace Cryptocurrencies.ViewModels
         {
             CoinInfo = HttpWorcker.GetCoinInfo(id);
             img = @"https://assets.coincap.io/assets/icons/" + CoinInfo.symbol.ToLower() + "@2x.png";
+            Prices = new List<PriceChange>(HttpWorcker.GetPriceInfo(id));
+            Prices.Reverse();
         }
     }
 }

@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Cryptocurrencies"
         xmlns:vm="clr-namespace:Cryptocurrencies.ViewModels"
         mc:Ignorable="d"
-        Title="Cryptocurrency" Height="688" Width="1032" MinWidth="850">
+        Title="Cryptocurrency" Height="688" Width="1032" MinWidth="850"
+        Icon="pack://application:,,,/Resources/icon.ico">
     
     <Window.DataContext>
         <vm:MainViewModel/>

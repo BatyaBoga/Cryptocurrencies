@@ -37,5 +37,12 @@ namespace Cryptocurrencies.Models
             DataInfo data = HttpWorcker.GetRequestAsync<DataInfo>(@"https://api.coincap.io/v2/assets/" + id).Result;
             return data.data;
         }
+
+        public static PriceChange[] GetPriceInfo(string id)
+        {
+            DataArr<PriceChange> dataArr = HttpWorcker.GetRequestAsync<DataArr<PriceChange>>(@"https://api.coincap.io/v2/assets/" + id + @"/history?interval=d1").Result;
+            PriceChange[] prices = dataArr.data;
+            return prices;
+        }
     }
 }
